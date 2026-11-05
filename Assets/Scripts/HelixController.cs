@@ -1,36 +1,38 @@
+
 using UnityEngine;
 
 public class HelixController : MonoBehaviour
 {
-     private Vector2 lastTapPosition;
-     private Vector3 startPosition;
-    void Awake()
-    {
-        startPosition = transform.localEulerAngles;
-    }
+    private Vector2 lastMousePosition;
+    private bool isDragging = false;
 
-    // Update is called once per frame
+    public float rotationSpeed = 0.5f;
+
     void Update()
     {
+        // Cuando presionamos el botón izquierdo
         if (Input.GetMouseButtonDown(0))
         {
-        
-            Vector2 currentTapPosition = Input.mousePosition;
-
-            if (lastTapPosition == Vector2.zero)
-            {
-                lastTapPosition = currentTapPosition;
-                return;
-            }
-
-            float distance = lastTapPosition.x - currentTapPosition.x;
-
-            transform.Rotate(Vector3.up * distance);
+            lastMousePosition = Input.mousePosition;
+            isDragging = true;
         }
 
+        // Mientras arrastramos el mouse
+        if (Input.GetMouseButton(0) && isDragging)
+        {
+            Vector2 currentMousePosition = Input.mousePosition;
+
+            float distance = currentMousePosition.x - lastMousePosition.x;
+
+            transform.Rotate(Vector3.up, distance * rotationSpeed, Space.World);
+
+            lastMousePosition = currentMousePosition;
+        }
+
+        // Cuando soltamos el botón
         if (Input.GetMouseButtonUp(0))
         {
-            lastTapPosition = Vector2.zero;
+            isDragging = false;
         }
     }
 }
