@@ -13,7 +13,7 @@ public class DeathPart : MonoBehaviour
             if (material.HasProperty("_Color"))
             {
                 material.color = Color.red;
-                Debug.Log("Color rojo aplicado a: " + rend.gameObject.name);
+           
             }
             else
             {
@@ -21,6 +21,6 @@ public class DeathPart : MonoBehaviour
             }
         }
 
-        Debug.Log("Plataforma peligrosa: " + gameObject.name);
+      
     }
 }

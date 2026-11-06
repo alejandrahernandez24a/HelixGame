@@ -16,11 +16,11 @@ MonoBehaviour:
   stageLevelPartColor: {r: 1, g: 0.07843138, b: 0.5764706, a: 1}
   stageBallColor: {r: 0, g: 1, b: 1, a: 1}
   levels:
-  - perCount: 1
+  - perCount: 11
     deathParttCount: 0
-  - perCount: 6
+  - perCount: 9
     deathParttCount: 0
-  - perCount: 5
+  - perCount: 7
     deathParttCount: 0
   - perCount: 7
     deathParttCount: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
     deathParttCount: 0
   - perCount: 9
     deathParttCount: 0
-  - perCount: 4
+  - perCount: 5
     deathParttCount: 0
   - perCount: 10
     deathParttCount: 0
