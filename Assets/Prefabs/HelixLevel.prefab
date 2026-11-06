@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6071464733002125111}
   - component: {fileID: 3335516810415036401}
+  - component: {fileID: 9025438193825074907}
   m_Layer: 0
   m_Name: HelixLevel
   m_TagString: Untagged
@@ -64,7 +65,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 4, y: 0.05, z: 4}
-  m_Center: {x: 0, y: 0.14, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9025438193825074907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279026356381213367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b614e79849d37418c3a48a4a4aab72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassScorePoint
 --- !u!1001 &332573837637239003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -224,6 +237,10 @@ PrefabInstance:
     - target: {fileID: 1419940011841542111, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
       propertyPath: m_Name
       value: HelixPartPrefab (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419940011841542111, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8765564562656694043, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
       propertyPath: m_LocalScale.x
@@ -669,6 +686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HelixPartPrefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1419940011841542111, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8765564562656694043, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -724,13 +745,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1419940011841542111, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 86242152218624332}
   m_SourcePrefab: {fileID: 100100000, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
 --- !u!4 &2208834515446134485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8765564562656694043, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
   m_PrefabInstance: {fileID: 7422725822448826830}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8410034853105610257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1419940011841542111, guid: c4c5635a125e6b949b42a0608ad53bc3, type: 3}
+  m_PrefabInstance: {fileID: 7422725822448826830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &86242152218624332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410034853105610257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618cc8a2ea08bcb4fa88dcbff7665f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathPart
 --- !u!1001 &8005225346773881562
 PrefabInstance:
   m_ObjectHideFlags: 0

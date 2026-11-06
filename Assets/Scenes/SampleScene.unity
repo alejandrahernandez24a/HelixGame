@@ -756,26 +756,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HelixTop
       objectReference: {fileID: 0}
-    - target: {fileID: 2208834515446134485, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2800716298729941048, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5485873427881968411, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5534657651695923452, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6071464733002125111, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6071464733002125111, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -816,29 +796,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6792705681307636056, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7213181385278541142, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8983808111181874437, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8089841087037607858, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6071464733002125111, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1461677310}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8410034853105610257, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1408550814}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
 --- !u!1 &832575517
 GameObject:
@@ -1294,89 +1255,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232386560}
   m_CullTransparentMesh: 1
---- !u!1 &1408550809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8410034853105610257, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
-  m_PrefabInstance: {fileID: 771968724}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1408550814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408550809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618cc8a2ea08bcb4fa88dcbff7665f4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeathPart
---- !u!1 &1461677309
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1461677310}
-  - component: {fileID: 1461677312}
-  - component: {fileID: 1461677311}
-  m_Layer: 0
-  m_Name: ScorePoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1461677310
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461677309}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1046951577}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1461677311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461677309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b614e79849d37418c3a48a4a4aab72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PassScorePoint
---- !u!65 &1461677312
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461677309}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1552275503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1386,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HelixController
   rotationSpeed: 0.5
+  topTransform: {fileID: 0}
+  goalTransform: {fileID: 0}
+  helixLevelPrefab: {fileID: 0}
+  allStages: []
+  helixDistance: 0
 --- !u!1001 &1923484402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1520,17 +1403,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: HelixTop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2182533156804658482, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2208834515446134485, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2800716298729941048, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4032838201968528830, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
+    - target: {fileID: 3335516810415036401, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639284454863958566, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032838201968528830, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5485873427881968411, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_Enabled
@@ -1538,7 +1433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5534657651695923452, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6071464733002125111, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_LocalScale.z
@@ -1586,11 +1481,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6526212838148753193, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6792705681307636056, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8061598661724593122, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8410034853105610257, guid: 3e6eb2d4c379db14eb379676e0684a4a, type: 3}
       propertyPath: m_IsActive
