@@ -19,19 +19,56 @@ public class HelixController : MonoBehaviour
 
     private List<GameObject> spawnedLevels = new List<GameObject>();
 
+    // Guardamos las posiciones de los puntos de referencia.
+    private float topLocalY;
+    private float goalLocalY;
+    private bool anchorsCached = false;
+
     public void Awake()
     {
         startRotation = transform.localEulerAngles;
 
-        if (topTransform == null || goalTransform == null)
+        CacheAnchorPositions();
+
+        if (!anchorsCached)
         {
-            Debug.LogError("Asigna HelixTop y HelixGoal en el Inspector.");
+            Debug.LogError(
+                "No se pudieron guardar las posiciones de HelixTop y HelixGoal."
+            );
             return;
         }
 
-        helixDistance = topTransform.position.y - goalTransform.position.y + .1f;
+        helixDistance = topLocalY - goalLocalY;
 
         LoadStage(0);
+    }
+
+    private void CacheAnchorPositions()
+    {
+        if (topTransform == null || goalTransform == null)
+        {
+            Debug.LogError(
+                "Asigna HelixTop y HelixGoal en el Inspector."
+            );
+
+            anchorsCached = false;
+            return;
+        }
+
+        // Guardamos las posiciones locales mientras los objetos existen.
+        topLocalY = transform.InverseTransformPoint(
+            topTransform.position
+        ).y;
+
+        goalLocalY = transform.InverseTransformPoint(
+            goalTransform.position
+        ).y;
+
+        anchorsCached = true;
+
+        Debug.Log(
+            "Posiciones de HelixTop y HelixGoal guardadas."
+        );
     }
 
     void Update()
@@ -46,9 +83,14 @@ public class HelixController : MonoBehaviour
         {
             Vector2 currentMousePosition = Input.mousePosition;
 
-            float distance = currentMousePosition.x - lastMousePosition.x;
+            float distance = currentMousePosition.x -
+                             lastMousePosition.x;
 
-            transform.Rotate(Vector3.up, distance * rotationSpeed, Space.World);
+            transform.Rotate(
+                Vector3.up,
+                distance * rotationSpeed,
+                Space.World
+            );
 
             lastMousePosition = currentMousePosition;
         }
@@ -63,6 +105,14 @@ public class HelixController : MonoBehaviour
     {
         Debug.Log("Iniciando carga del Stage: " + stageNumber);
 
+        if (!anchorsCached)
+        {
+            Debug.LogError(
+                "Las posiciones de HelixTop y HelixGoal no están guardadas."
+            );
+            return;
+        }
+
         if (allStages == null || allStages.Count == 0)
         {
             Debug.LogError("No hay stages configurados.");
@@ -75,34 +125,49 @@ public class HelixController : MonoBehaviour
             return;
         }
 
-        Stage stage = allStages[Mathf.Clamp(stageNumber, 0, allStages.Count - 1)];
+        int index = Mathf.Clamp(
+            stageNumber,
+            0,
+            allStages.Count - 1
+        );
 
-        if (stage == null || stage.levels == null || stage.levels.Count == 0)
+        Stage stage = allStages[index];
+
+        if (stage == null ||
+            stage.levels == null ||
+            stage.levels.Count == 0)
         {
-            Debug.LogError("El Stage no tiene niveles configurados.");
+            Debug.LogError(
+                "El Stage no tiene niveles configurados."
+            );
             return;
         }
 
         if (Camera.main != null)
         {
-            Camera.main.backgroundColor = stage.stageBackgroundColor;
+            Camera.main.backgroundColor =
+                stage.stageBackgroundColor;
         }
 
-        BallController ball = FindAnyObjectByType<BallController>();
+        BallController ball =
+            FindAnyObjectByType<BallController>();
 
         if (ball != null)
         {
-            Renderer ballRenderer = ball.GetComponent<Renderer>();
+            Renderer ballRenderer =
+                ball.GetComponent<Renderer>();
 
             if (ballRenderer != null)
             {
-                ballRenderer.material.color = stage.stageBallColor;
+                ballRenderer.material.color =
+                    stage.stageBallColor;
             }
         }
 
+        // Restablecemos la rotación de la hélice.
         transform.localEulerAngles = startRotation;
 
-   
+        // Destruimos los niveles generados anteriormente.
         foreach (GameObject go in spawnedLevels)
         {
             if (go != null)
@@ -113,64 +178,78 @@ public class HelixController : MonoBehaviour
 
         spawnedLevels.Clear();
 
-         
-        float topY = transform.InverseTransformPoint(topTransform.position).y;
-        float goalY = transform.InverseTransformPoint(goalTransform.position).y;
+        // Utilizamos las posiciones guardadas.
+        // Ya no accedemos a topTransform.position ni goalTransform.position.
+        float topY = topLocalY;
+        float goalY = goalLocalY;
 
         helixDistance = topY - goalY;
 
         if (helixDistance <= 0)
         {
-            Debug.LogError("La distancia entre HelixTop y HelixGoal es incorrecta.");
+            Debug.LogError(
+                "La distancia entre HelixTop y HelixGoal es incorrecta."
+            );
             return;
         }
 
-        float levelDistance = helixDistance / stage.levels.Count;
+        float levelDistance =
+            helixDistance / stage.levels.Count;
 
-        
         for (int i = 0; i < stage.levels.Count; i++)
         {
-            float spawnPosY = topY - (levelDistance * (i + 1));
+            float spawnPosY =
+                topY - (levelDistance * (i + 1));
 
-            GameObject level = Instantiate(helixLevelPrefab, transform, false);
+            GameObject level = Instantiate(
+                helixLevelPrefab,
+                transform,
+                false
+            );
 
-            level.transform.localPosition = new Vector3(0, spawnPosY, 0);
-            level.transform.localRotation = Quaternion.identity;
+            level.transform.localPosition =
+                new Vector3(0, spawnPosY, 0);
+
+            level.transform.localRotation =
+                Quaternion.identity;
 
             spawnedLevels.Add(level);
 
-         
-            int totalParts = level.transform.childCount;
+            int totalParts =
+                level.transform.childCount;
 
-            
             int partsToKeep = Mathf.Clamp(
                 stage.levels[i].perCount,
                 0,
                 totalParts
             );
 
-          
-            int partsToDisable = totalParts - partsToKeep;
+            int partsToDisable =
+                totalParts - partsToKeep;
 
-     
-            List<GameObject> parts = new List<GameObject>();
+            List<GameObject> parts =
+                new List<GameObject>();
 
             for (int j = 0; j < totalParts; j++)
             {
-                parts.Add(level.transform.GetChild(j).gameObject);
+                parts.Add(
+                    level.transform.GetChild(j).gameObject
+                );
             }
 
-      
+            // Mezclamos aleatoriamente las plataformas.
             for (int j = 0; j < parts.Count; j++)
             {
-                int randomIndex = Random.Range(j, parts.Count);
+                int randomIndex =
+                    Random.Range(j, parts.Count);
 
                 GameObject temp = parts[j];
+
                 parts[j] = parts[randomIndex];
                 parts[randomIndex] = temp;
             }
 
-     
+            // Desactivamos las plataformas que no se utilizarán.
             for (int j = 0; j < partsToDisable; j++)
             {
                 parts[j].SetActive(false);
@@ -184,6 +263,9 @@ public class HelixController : MonoBehaviour
             );
         }
 
-        Debug.Log("Total de niveles creados: " + spawnedLevels.Count);
+        Debug.Log(
+            "Total de niveles creados: " +
+            spawnedLevels.Count
+        );
     }
 }

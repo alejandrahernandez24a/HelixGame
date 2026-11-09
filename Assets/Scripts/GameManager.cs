@@ -27,6 +27,25 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         currentLevel++;
+
+        BallController ball =
+            FindAnyObjectByType<BallController>();
+
+        HelixController helix =
+            FindAnyObjectByType<HelixController>();
+
+        if (ball == null || helix == null)
+        {
+            Debug.LogError(
+                "No se encontró la pelota o HelixController."
+            );
+            return;
+        }
+
+        ball.ResetBall();
+
+        helix.LoadStage(currentLevel);
+
         Debug.Log("Next Level: " + currentLevel);
     }
 
@@ -34,18 +53,25 @@ public class GameManager : MonoBehaviour
     {
         currentScore = 0;
 
-        Debug.Log("Restarting Level: " + currentLevel);
+        BallController ball =
+            FindAnyObjectByType<BallController>();
 
-        BallController ball = FindAnyObjectByType<BallController>();
+        HelixController helix =
+            FindAnyObjectByType<HelixController>();
 
-        if (ball != null)
+        if (ball == null || helix == null)
         {
-            ball.ResetBall();
+            Debug.LogError(
+                "No se encontró la pelota o HelixController."
+            );
+            return;
         }
-        else
-        {
-            Debug.LogWarning("No se encontró BallController en la escena.");
-        }
+
+        ball.ResetBall();
+
+        helix.LoadStage(currentLevel);
+
+        Debug.Log("Nivel reiniciado: " + currentLevel);
     }
 
     public void AddScore(int scoretoAdd)
@@ -55,7 +81,13 @@ public class GameManager : MonoBehaviour
         if (currentScore > bestScore)
         {
             bestScore = currentScore;
-            PlayerPrefs.SetInt("HighScore", currentScore);
+
+            PlayerPrefs.SetInt(
+                "HighScore",
+                currentScore
+            );
+
+            PlayerPrefs.Save();
         }
     }
 }
